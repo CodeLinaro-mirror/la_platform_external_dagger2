@@ -83,9 +83,18 @@ java_library {
         "//apex_available:platform",
         "com.android.adservices",
         "com.android.ondevicepersonalization",
+        "com.android.healthconnect",
+        "com.android.devicelock",
     ],
 
     sdk_version: "core_current",
+
+    errorprone: {
+        javacflags: [
+            "-Xep:FormatStringAnnotation:WARN",
+            "-Xep:NoCanIgnoreReturnValueOnClasses:WARN",
+        ],
+    },
 }
 
 // build dagger2 producers library
@@ -204,6 +213,13 @@ java_library_host {
         "--add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
         "--add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
     ],
+
+    errorprone: {
+        javacflags: [
+            "-Xep:FormatStringAnnotation:WARN",
+            "-Xep:NoCanIgnoreReturnValueOnClasses:WARN",
+        ],
+    },
 }
 
 // Compile  dummy implementations of annotations used by dagger2 but not
@@ -239,6 +255,10 @@ java_library {
     plugins: [
         "hilt_define_component_processor",
         "hilt_generates_root_input_processor",
+    ],
+    apex_available: [
+        "com.android.ondevicepersonalization",
+        "com.android.healthconnect",
     ],
 }
 
@@ -305,6 +325,10 @@ android_library {
         "hilt_originating_element_processor",
         "hilt_root_processor",
         "hilt_viewmodel_processor",
+    ],
+    apex_available: [
+        "com.android.ondevicepersonalization",
+        "com.android.healthconnect",
     ],
 }
 
