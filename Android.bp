@@ -257,6 +257,7 @@ java_library {
         "hilt_generates_root_input_processor",
     ],
     apex_available: [
+        "//apex_available:platform",
         "com.android.ondevicepersonalization",
         "com.android.healthconnect",
     ],
@@ -327,6 +328,7 @@ android_library {
         "hilt_viewmodel_processor",
     ],
     apex_available: [
+        "//apex_available:platform",
         "com.android.ondevicepersonalization",
         "com.android.healthconnect",
     ],
@@ -339,7 +341,9 @@ android_library {
     srcs: [
         "java/dagger/hilt/android/internal/testing/*.java",
         "java/dagger/hilt/android/internal/testing/root/*.java",
+        "java/dagger/hilt/android/internal/uninstallmodules/*.java",
         "java/dagger/hilt/android/testing/*.java",
+        "java/dagger/hilt/testing/*.java",
     ],
     manifest: "java/dagger/hilt/android/testing/AndroidManifest.xml",
     static_libs: [
